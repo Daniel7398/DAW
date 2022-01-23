@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Project.Repositories.GenericRepository
+namespace Project.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity:class
     {
