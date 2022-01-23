@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Foca\\source\\repos\\Project\\Project.csproj": {}
+    "C:\\Users\\Foca\\Documents\\GitHub\\DAW\\Project\\Project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Foca\\source\\repos\\Project\\Project.csproj": {
+    "C:\\Users\\Foca\\Documents\\GitHub\\DAW\\Project\\Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Foca\\source\\repos\\Project\\Project.csproj",
+        "projectUniqueName": "C:\\Users\\Foca\\Documents\\GitHub\\DAW\\Project\\Project.csproj",
         "projectName": "Project",
-        "projectPath": "C:\\Users\\Foca\\source\\repos\\Project\\Project.csproj",
+        "projectPath": "C:\\Users\\Foca\\Documents\\GitHub\\DAW\\Project\\Project.csproj",
         "packagesPath": "C:\\Users\\Foca\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Foca\\source\\repos\\Project\\obj\\",
+        "outputPath": "C:\\Users\\Foca\\Documents\\GitHub\\DAW\\Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Foca\\AppData\\Roaming\\NuGet\\NuGet.Config",
