@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,7 +10,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Project.Models;
+using Project.Models.Constants;
 using Project.Repositories;
+using Project.Repositories.Services.UserServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +45,23 @@ namespace Project
             });
 
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(UserRoleType.Admin, policy => policy.RequireRole(UserRoleType.Admin));
+                options.AddPolicy(UserRoleType.User, policy => policy.RequireRole(UserRoleType.User));
+
+            });
+
+            services.AddAuthentication(auth =>
+            {
+                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                auth.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
