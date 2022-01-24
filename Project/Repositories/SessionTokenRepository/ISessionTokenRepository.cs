@@ -8,5 +8,6 @@ namespace Project.Repositories
 {
     public interface ISessionTokenRepository : IGenericRepository<SessionToken>
     {
+        Task<SessionToken> GetByJTI(string jti);
     }
 }

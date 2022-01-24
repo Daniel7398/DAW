@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using Project.Entities;
 using Project.Models.Constants;
+using Project.Models.Entities;
 using Project.Repositories.DTOs;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace Project.Repositories.Services.UserServices
         {
             var registerUser = new User();
             registerUser.Email = dto.Email;
+            registerUser.UserName = dto.Email;
             registerUser.FirstName = dto.FirstName;
             registerUser.LastName = dto.LastName;
 
@@ -57,6 +59,9 @@ namespace Project.Repositories.Services.UserServices
                 var signinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is my custom secret key for auth"));
 
                 var token = GenerateJwtToken(signinKey, user, roles, tokenHandler, newJti);
+
+                _repository.SessionToken.Create(new SessionToken(newJti, user.Id, token.ValidTo));
+                await _repository.SaveAsync();
 
                 return tokenHandler.WriteToken(token);
 

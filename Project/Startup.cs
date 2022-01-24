@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Project.Entities;
 using Project.Models;
@@ -19,6 +20,7 @@ using Project.Seed;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Project
@@ -62,7 +64,23 @@ namespace Project
                 auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 auth.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer();
+            .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is my custom secret key for auth")),
+                    ValidateIssuerSigningKey = true
+                };
+                options.Events = new JwtBearerEvents()
+                {
+                    OnTokenValidated = Helpers.SessionTokenValidator.ValidateSessionToken
+                };
+            });
+
 
 
             services.AddIdentity<User, Role>()
