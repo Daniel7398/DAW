@@ -56,6 +56,10 @@ namespace Project.Repositories.Services.UserServices
 
                 var signinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is my custom secret key for auth"));
 
+                var token = GenerateJwtToken(signinKey, user, roles, tokenHandler, newJti);
+
+                return tokenHandler.WriteToken(token);
+
             }
             return "";
         }
@@ -78,7 +82,7 @@ namespace Project.Repositories.Services.UserServices
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = subject,
-                Expires = DateTime.Now.AddHours(1),
+                Expires = DateTime.Now.AddHours(24),
                 SigningCredentials = new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256)
 
             };
