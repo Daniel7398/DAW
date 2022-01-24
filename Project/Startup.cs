@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -9,10 +10,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Project.Entities;
 using Project.Models;
 using Project.Models.Constants;
 using Project.Repositories;
 using Project.Repositories.Services.UserServices;
+using Project.Seed;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,9 +47,7 @@ namespace Project
                 options.UseSqlServer("Data Source=DESKTOP-UL1UG3G;Initial Catalog=Project;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             });
 
-            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
-
-            services.AddScoped<IUserService, UserService>();
+           
 
             services.AddAuthorization(options =>
             {
@@ -62,10 +63,19 @@ namespace Project
                 auth.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer();
+
+
+            services.AddIdentity<User, Role>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<SeedDb>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, SeedDb seed, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -84,6 +94,15 @@ namespace Project
             {
                 endpoints.MapControllers();
             });
+
+            try
+            {
+                seed.SeedRoles().Wait();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

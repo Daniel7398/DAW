@@ -58,7 +58,7 @@ namespace Project.Controllers
                 return Unauthorized();
             }
 
-            return Ok(new(token));
+            return Ok(new { token });
         }
     }
 }

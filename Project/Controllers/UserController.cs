@@ -24,7 +24,7 @@ namespace Project.Controllers
         public async Task<ActionResult> GetAllUsers()
         {
             var users = await _repository.User.GetAllUsers();
-            return Ok(users);
+            return Ok( new { users });
         }
 
         
