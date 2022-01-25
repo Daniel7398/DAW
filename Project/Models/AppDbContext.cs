@@ -39,7 +39,7 @@ namespace Project.Models
 
             builder.Entity<User>( u =>
             {
-                u.HasMany(u => u.Carts).WithOne(c => c.User);
+                u.HasOne(u => u.Cart).WithOne(c => c.User).HasForeignKey<Cart>(u => u.UserForeignKey); 
                 u.HasMany(u => u.Products).WithOne(u => u.User);
                 u.HasMany(u => u.Reviews).WithOne(r => r.User);
             });
@@ -58,13 +58,22 @@ namespace Project.Models
 
             builder.Entity<Product>(p =>
             {
-                p.HasMany(p => p.Reviews).WithOne(r => r.Product);
                 p.HasMany(p => p.Quantities).WithOne(q => q.Product);
             });
 
 
 
+            builder.Entity<ProductReview>().HasKey(pr => new { pr.ProductId, pr.ReviewId });
 
+            builder.Entity<ProductReview>()
+                .HasOne(pr => pr.Product)
+                .WithMany(p => p.ProductReviews)
+                .HasForeignKey(pr => pr.ProductId);
+
+            builder.Entity<ProductReview>()
+            .HasOne(pr => pr.Review)
+            .WithMany(r => r.ProductReviews)
+            .HasForeignKey(pr => pr.ReviewId);
 
         }
     }

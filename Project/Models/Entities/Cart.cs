@@ -13,7 +13,7 @@ namespace Project.Models.Entities
         [Key]
         public int CartId { get; set; }
 
-        public string UserId { get; set; }
+        public int UserForeignKey { get; set; }
 
         public virtual User User { get; set; }
         public virtual ICollection<Quantity> Quantities { get; set; }

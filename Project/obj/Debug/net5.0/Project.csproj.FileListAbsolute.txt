@@ -129,4 +129,3 @@ C:\Users\Foca\Documents\GitHub\DAW\Project\obj\Debug\net5.0\scopedcss\bundle\Pro
 C:\Users\Foca\Documents\GitHub\DAW\Project\obj\Debug\net5.0\Project.RazorTargetAssemblyInfo.cache
 C:\Users\Foca\Documents\GitHub\DAW\Project\obj\Debug\net5.0\Project.csproj.CopyComplete
 C:\Users\Foca\Documents\GitHub\DAW\Project\obj\Debug\net5.0\Project.genruntimeconfig.cache
-C:\Users\Foca\Documents\GitHub\DAW\Project\obj\Debug\net5.0\Project.csproj.AssemblyReference.cache

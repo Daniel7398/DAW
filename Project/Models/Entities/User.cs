@@ -17,7 +17,7 @@ namespace Project.Entities
 
         public ICollection<UserRole> UserRoles { get; set; }
 
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual Cart Cart { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
 

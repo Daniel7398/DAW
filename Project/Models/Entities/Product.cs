@@ -39,7 +39,7 @@ namespace Project.Models.Entities
 
         public virtual User User { get; set; }
         public  virtual Category Category { get; set; }
-        public  virtual ICollection<Review> Reviews { get; set; }
+        public virtual ICollection<ProductReview> ProductReviews { get; set; }
 
         public  virtual ICollection<Quantity> Quantities { get; set; }
     }

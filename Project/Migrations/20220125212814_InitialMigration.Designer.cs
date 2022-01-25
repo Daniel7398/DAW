@@ -10,8 +10,8 @@ using Project.Models;
 namespace Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220125154912_EntitiesMigration")]
-    partial class EntitiesMigration
+    [Migration("20220125212814_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -231,15 +231,13 @@ namespace Project.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("UserId1")
+                    b.Property<int>("UserForeignKey")
                         .HasColumnType("int");
 
                     b.HasKey("CartId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserForeignKey")
+                        .IsUnique();
 
                     b.ToTable("Carts");
                 });
@@ -310,6 +308,21 @@ namespace Project.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("Project.Models.Entities.ProductReview", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReviewId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "ReviewId");
+
+                    b.HasIndex("ReviewId");
+
+                    b.ToTable("ProductReview");
+                });
+
             modelBuilder.Entity("Project.Models.Entities.Quantity", b =>
                 {
                     b.Property<int>("QuantityId")
@@ -365,8 +378,6 @@ namespace Project.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ReviewId");
-
-                    b.HasIndex("ProductId");
 
                     b.HasIndex("UserId1");
 
@@ -449,8 +460,10 @@ namespace Project.Migrations
             modelBuilder.Entity("Project.Models.Entities.Cart", b =>
                 {
                     b.HasOne("Project.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
+                        .WithOne("Cart")
+                        .HasForeignKey("Project.Models.Entities.Cart", "UserForeignKey")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -464,12 +477,31 @@ namespace Project.Migrations
                         .IsRequired();
 
                     b.HasOne("Project.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("UserId1");
 
                     b.Navigation("Category");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Project.Models.Entities.ProductReview", b =>
+                {
+                    b.HasOne("Project.Models.Entities.Product", "Product")
+                        .WithMany("ProductReviews")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Project.Models.Entities.Review", "Review")
+                        .WithMany("ProductReviews")
+                        .HasForeignKey("ReviewId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Review");
                 });
 
             modelBuilder.Entity("Project.Models.Entities.Quantity", b =>
@@ -491,17 +523,9 @@ namespace Project.Migrations
 
             modelBuilder.Entity("Project.Models.Entities.Review", b =>
                 {
-                    b.HasOne("Project.Models.Entities.Product", "Product")
-                        .WithMany("Reviews")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Project.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("Reviews")
                         .HasForeignKey("UserId1");
-
-                    b.Navigation("Product");
 
                     b.Navigation("User");
                 });
@@ -524,6 +548,12 @@ namespace Project.Migrations
 
             modelBuilder.Entity("Project.Entities.User", b =>
                 {
+                    b.Navigation("Cart");
+
+                    b.Navigation("Products");
+
+                    b.Navigation("Reviews");
+
                     b.Navigation("UserRoles");
                 });
 
@@ -539,9 +569,14 @@ namespace Project.Migrations
 
             modelBuilder.Entity("Project.Models.Entities.Product", b =>
                 {
-                    b.Navigation("Quantities");
+                    b.Navigation("ProductReviews");
 
-                    b.Navigation("Reviews");
+                    b.Navigation("Quantities");
+                });
+
+            modelBuilder.Entity("Project.Models.Entities.Review", b =>
+                {
+                    b.Navigation("ProductReviews");
                 });
 #pragma warning restore 612, 618
         }
