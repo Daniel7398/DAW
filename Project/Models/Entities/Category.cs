@@ -13,6 +13,6 @@ namespace Project.Models.Entities
         [Required(ErrorMessage = "Numele categoriei este obligatoriu")]
         public string CategoryName { get; set; }
 
-        public  ICollection<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

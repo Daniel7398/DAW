@@ -15,7 +15,7 @@ namespace Project.Models.Entities
 
         public string UserId { get; set; }
 
-        public  User User { get; set; }
-        public  ICollection<Quantity> Quantities { get; set; }
+        public virtual User User { get; set; }
+        public virtual ICollection<Quantity> Quantities { get; set; }
     }
 }

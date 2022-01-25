@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project.Models;
 
 namespace Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220125154912_EntitiesMigration")]
+    partial class EntitiesMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -447,7 +449,7 @@ namespace Project.Migrations
             modelBuilder.Entity("Project.Models.Entities.Cart", b =>
                 {
                     b.HasOne("Project.Entities.User", "User")
-                        .WithMany("Carts")
+                        .WithMany()
                         .HasForeignKey("UserId1");
 
                     b.Navigation("User");
@@ -462,7 +464,7 @@ namespace Project.Migrations
                         .IsRequired();
 
                     b.HasOne("Project.Entities.User", "User")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("UserId1");
 
                     b.Navigation("Category");
@@ -496,7 +498,7 @@ namespace Project.Migrations
                         .IsRequired();
 
                     b.HasOne("Project.Entities.User", "User")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("UserId1");
 
                     b.Navigation("Product");
@@ -522,12 +524,6 @@ namespace Project.Migrations
 
             modelBuilder.Entity("Project.Entities.User", b =>
                 {
-                    b.Navigation("Carts");
-
-                    b.Navigation("Products");
-
-                    b.Navigation("Reviews");
-
                     b.Navigation("UserRoles");
                 });
 

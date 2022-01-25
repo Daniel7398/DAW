@@ -16,6 +16,12 @@ namespace Project.Models
 
         public DbSet<SessionToken> SessionTokens { get; set; }
 
+        public DbSet<Cart> Carts { get; set;}
+        public DbSet<Category> Caregories { get; set;}
+        public DbSet<Product> Products { get; set;}
+        public DbSet<Quantity> Quantities { get; set;}
+        public DbSet<Review> Reviews { get; set;}
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -29,6 +35,37 @@ namespace Project.Models
                 ur.HasOne(ur => ur.User).WithMany(u => u.UserRoles)
                 .HasForeignKey(ur => ur.UserId);
             });
+
+
+            builder.Entity<User>( u =>
+            {
+                u.HasMany(u => u.Carts).WithOne(c => c.User);
+                u.HasMany(u => u.Products).WithOne(u => u.User);
+                u.HasMany(u => u.Reviews).WithOne(r => r.User);
+            });
+
+
+            builder.Entity<Cart>( c =>
+            {
+                c.HasMany(c => c.Quantities).WithOne(q => q.Cart);
+
+            });
+
+            builder.Entity<Category>( cat =>
+            {
+                cat.HasMany(cat => cat.Products).WithOne(p => p.Category);
+            });
+
+            builder.Entity<Product>(p =>
+            {
+                p.HasMany(p => p.Reviews).WithOne(r => r.Product);
+                p.HasMany(p => p.Quantities).WithOne(q => q.Product);
+            });
+
+
+
+
+
         }
     }
 }

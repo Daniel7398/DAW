@@ -37,12 +37,10 @@ namespace Project.Models.Entities
         public DateTime Date { get; set; }
         public string UserId { get; set; }
 
-        public IEnumerable<SelectListItem> Categ { get; set; }
+        public virtual User User { get; set; }
+        public  virtual Category Category { get; set; }
+        public  virtual ICollection<Review> Reviews { get; set; }
 
-        public User User { get; set; }
-        public  Category Category { get; set; }
-        public  ICollection<Review> Reviews { get; set; }
-
-        public  ICollection<Quantity> Quantities { get; set; }
+        public  virtual ICollection<Quantity> Quantities { get; set; }
     }
 }

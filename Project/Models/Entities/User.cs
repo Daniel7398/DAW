@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Project.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,14 @@ namespace Project.Entities
         public string LastName { get; set; }
 
         public ICollection<UserRole> UserRoles { get; set; }
+
+        public virtual ICollection<Cart> Carts { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
+
+        public virtual ICollection<Review> Reviews { get; set; }
+
+
 
     }
 }
