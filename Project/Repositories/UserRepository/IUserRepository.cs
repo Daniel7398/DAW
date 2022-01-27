@@ -13,5 +13,7 @@ namespace Project.Repositories
         Task<User> GetUserByEmail(string email);
 
         Task<User> GetByIdWithRoles(int id);
+
+
     }
 }

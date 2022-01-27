@@ -12,12 +12,12 @@ namespace Project.Models
 {
     public class AppDbContext : IdentityDbContext<User, Role, int, IdentityUserClaim<int>, UserRole, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
-        public AppDbContext(DbContextOptions options) : base(options) { }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<SessionToken> SessionTokens { get; set; }
 
         public DbSet<Cart> Carts { get; set;}
-        public DbSet<Category> Caregories { get; set;}
+        public DbSet<Category> Categories { get; set;}
         public DbSet<Product> Products { get; set;}
         public DbSet<Quantity> Quantities { get; set;}
         public DbSet<Review> Reviews { get; set;}

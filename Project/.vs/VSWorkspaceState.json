@@ -2,8 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\Models",
-    "\\Repositories",
-    "\\Repositories\\DTOs"
+    "\\Repositories"
   ],
   "SelectedNode": "\\Project.sln",
   "PreviewInSolutionExplorer": false

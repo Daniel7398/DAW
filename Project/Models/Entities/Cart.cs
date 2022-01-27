@@ -15,6 +15,8 @@ namespace Project.Models.Entities
 
         public int UserForeignKey { get; set; }
 
+        public int UserId;
+
         public virtual User User { get; set; }
         public virtual ICollection<Quantity> Quantities { get; set; }
     }
