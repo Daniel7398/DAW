@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Project.Repositories.ProductRepository
 {
-    interface IProductRepository : IGenericRepository<Product>
+    public interface IProductRepository : IGenericRepository<Product>
     {
-        IEnumerable<SelectListItem> GetAllCategories();
-        float CalculateRating(Product product);
+        Task<List<Product>> GetAllProducts();
+        public float CalculateRating(Product product);
     }
 }

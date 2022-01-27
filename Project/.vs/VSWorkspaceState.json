@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Controllers",
     "\\Models",
-    "\\Repositories"
+    "\\Models\\Entities",
+    "\\Repositories",
+    "\\Repositories\\DTOs",
+    "\\Repositories\\ProductRepository"
   ],
   "SelectedNode": "\\Project.sln",
   "PreviewInSolutionExplorer": false

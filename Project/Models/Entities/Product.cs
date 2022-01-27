@@ -32,8 +32,6 @@ namespace Project.Models.Entities
 
         public float Rating { get; set; }
 
-        public bool Cerere { get; set; }
-
         public DateTime Date { get; set; }
         public string UserId { get; set; }
 

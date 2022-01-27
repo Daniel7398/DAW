@@ -1,5 +1,7 @@
 ﻿using Project.Entities;
 using Project.Models.Entities;
+using Project.Repositories.CategoryRepository;
+using Project.Repositories.ProductRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,13 @@ namespace Project.Repositories.DTOs
 {
     public class ProductsDTOs
     {
+        private readonly IProductRepository _repository;
+
+        public ProductsDTOs(IProductRepository repository)
+        {
+            _repository = repository;
+        }
+
         public int Id { get; set; }
         public string Nume { get; set; }
         public string Descriere { get; set; }
@@ -19,8 +28,6 @@ namespace Project.Repositories.DTOs
         public int CategoryId { get; set; }
 
         public float Rating { get; set; }
-
-        public bool Cerere { get; set; }
 
         public DateTime Date { get; set; }
         public string UserId { get; set; }
@@ -40,8 +47,7 @@ namespace Project.Repositories.DTOs
             this.Pret = product.Pret;
             this.Poza = product.Poza;
             this.CategoryId = product.CategoryId;
-            this.Rating = product.Rating;
-            this.Cerere = product.Cerere;
+            this.Rating = _repository.CalculateRating(product);
             this.Date = product.Date;
             this.UserId = product.UserId;
             this.User = product.User;

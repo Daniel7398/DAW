@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Project.Repositories.QuantityRepository
 {
-    interface IQuantityRepository : IGenericRepository<Quantity>
+    public interface IQuantityRepository : IGenericRepository<Quantity>
     {
-
+        Task<List<Quantity>> GetAllQuantities();
     }
 }

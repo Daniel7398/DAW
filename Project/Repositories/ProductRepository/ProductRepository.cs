@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Project.Models.Entities;
 using System;
@@ -27,22 +28,9 @@ namespace Project.Repositories.ProductRepository
         }
 
 
-        public IEnumerable<SelectListItem> GetAllCategories() 
+        public async Task<List<Product>> GetAllProducts() 
         {
-            var selectList = new List<SelectListItem>();
-
-            var categories = from cat in _context.Categories
-                             select cat;
-
-            foreach (var category in categories)
-            {
-                selectList.Add(new SelectListItem
-                {
-                    Value = category.CategoryId.ToString(),
-                    Text = category.CategoryName.ToString()
-                });
-            }
-            return selectList;
+            return await _context.Products.ToListAsync();
         }
     }
 }
