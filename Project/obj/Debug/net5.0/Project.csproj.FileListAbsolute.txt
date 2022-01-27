@@ -129,4 +129,7 @@ C:\Users\Foca\Documents\GitHub\DAW\Project\obj\Debug\net5.0\scopedcss\bundle\Pro
 C:\Users\Foca\Documents\GitHub\DAW\Project\obj\Debug\net5.0\Project.RazorTargetAssemblyInfo.cache
 C:\Users\Foca\Documents\GitHub\DAW\Project\obj\Debug\net5.0\Project.csproj.CopyComplete
 C:\Users\Foca\Documents\GitHub\DAW\Project\obj\Debug\net5.0\Project.genruntimeconfig.cache
-C:\Users\Foca\Documents\GitHub\DAW\Project\obj\Debug\net5.0\Project.csproj.AssemblyReference.cache
+C:\Users\Foca\Documents\GitHub\DAW\Project\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Foca\Documents\GitHub\DAW\Project\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Foca\Documents\GitHub\DAW\Project\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Foca\Documents\GitHub\DAW\Project\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Project.Repositories.CategoryRepository
+namespace Project.Repositories
 {
     public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
     {

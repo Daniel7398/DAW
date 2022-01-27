@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Project.Models.Entities;
 using Project.Repositories.DTOs;
-using Project.Repositories.ReviewRepository;
+using Project.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +36,33 @@ namespace Project.Controllers
 
 
             return Ok(reviewsToReturn);
+        }
+
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> GetReviewById(int id)
+        {
+            var review = await _repository.GetByIdAsync(id);
+
+            return Ok(new ReviewDTOs(review));
+        }
+
+        [HttpDelete]
+
+        public async Task<IActionResult> DeleteReview(int id)
+        {
+            var review = await _repository.GetByIdAsync(id);
+
+            if (review == null)
+            {
+                return NotFound("Category does not exist!");
+            }
+
+            _repository.Delete(review);
+
+            await _repository.SaveAsync();
+
+            return NoContent();
         }
 
 

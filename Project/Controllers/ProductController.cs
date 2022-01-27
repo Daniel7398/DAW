@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Project.Models.Entities;
 using Project.Repositories.DTOs;
-using Project.Repositories.ProductRepository;
+using Project.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +35,33 @@ namespace Project.Controllers
 
 
             return Ok(productsToReturn);
+        }
+
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> GetProductById(int id)
+        {
+            var product = await _repository.GetByIdAsync(id);
+
+            return Ok(new ProductsDTOs(product));
+        }
+
+        [HttpDelete]
+
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var product = await _repository.GetByIdAsync(id);
+
+            if (product == null)
+            {
+                return NotFound("Product does not exist!");
+            }
+
+            _repository.Delete(product);
+
+            await _repository.SaveAsync();
+
+            return NoContent();
         }
 
 

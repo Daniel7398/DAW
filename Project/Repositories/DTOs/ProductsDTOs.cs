@@ -1,7 +1,6 @@
 ﻿using Project.Entities;
 using Project.Models.Entities;
-using Project.Repositories.CategoryRepository;
-using Project.Repositories.ProductRepository;
+using Project.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

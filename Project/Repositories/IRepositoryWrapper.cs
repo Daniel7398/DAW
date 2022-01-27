@@ -10,6 +10,16 @@ namespace Project.Repositories
     {
         IUserRepository User { get; }
         ISessionTokenRepository SessionToken { get; }
+        ICartRepository Cart { get;}
+
+        ICategoryRepository Category { get; }
+
+        IProductRepository Product { get; }
+
+        IQuantityRepository Quantity { get; }
+
+        IReviewRepository Review { get; }
+
 
         Task SaveAsync(); 
 

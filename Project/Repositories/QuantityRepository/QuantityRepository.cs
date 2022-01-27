@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Project.Repositories.QuantityRepository 
+namespace Project.Repositories
 {
     public class QuantityRepository : GenericRepository<Quantity>, IQuantityRepository
     {

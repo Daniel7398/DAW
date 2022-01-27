@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Project.Repositories.CartRepository 
+namespace Project.Repositories 
 {
-    interface ICartRepository : IGenericRepository<Cart>
+    public interface ICartRepository : IGenericRepository<Cart>
     {
         Task<Cart> GetByUser(User user);
     }

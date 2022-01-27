@@ -5,6 +5,7 @@
     "\\Models",
     "\\Models\\Entities",
     "\\Repositories",
+    "\\Repositories\\CartRepository",
     "\\Repositories\\DTOs",
     "\\Repositories\\ProductRepository"
   ],

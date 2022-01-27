@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project.Models.Entities;
-using Project.Repositories.CategoryRepository;
+using Project.Repositories;
 using Project.Repositories.DTOs;
 using System;
 using System.Collections.Generic;
@@ -37,6 +37,32 @@ namespace Project.Controllers
             return Ok(categoriesToReturn);
         }
 
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> GetCategoryById(int id)
+        {
+            var category = await _repository.GetByIdAsync(id);
+
+            return Ok(new CategoriesDTOs(category));
+        }
+
+        [HttpDelete]
+
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            var category = await _repository.GetByIdAsync(id);
+
+            if (category == null)
+            {
+                return NotFound("Category does not exist!");
+            }
+
+            _repository.Delete(category);
+
+            await _repository.SaveAsync();
+
+            return NoContent();
+        }
 
         [HttpPost]
 

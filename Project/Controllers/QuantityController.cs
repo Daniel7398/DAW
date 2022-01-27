@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Project.Models.Entities;
 using Project.Repositories.DTOs;
-using Project.Repositories.QuantityRepository;
+using Project.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +37,32 @@ namespace Project.Controllers
             return Ok(quantitiesToReturn);
         }
 
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> GetQuantityById(int id)
+        {
+            var quantity = await _repository.GetByIdAsync(id);
+
+            return Ok(new QuantitiesDTOs(quantity));
+        }
+
+        [HttpDelete]
+
+        public async Task<IActionResult> DeleteQuantity(int id)
+        {
+            var quantity = await _repository.GetByIdAsync(id);
+
+            if (quantity == null)
+            {
+                return NotFound("Quantity does not exist!");
+            }
+
+            _repository.Delete(quantity);
+
+            await _repository.SaveAsync();
+
+            return NoContent();
+        }
 
         [HttpPost]
 
