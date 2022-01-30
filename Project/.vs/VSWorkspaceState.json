@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Repositories",
-    "\\Repositories\\CartRepository",
-    "\\Repositories\\DTOs",
-    "\\Repositories\\ProductRepository"
+    "\\Repositories"
   ],
+  "SelectedNode": "\\Repositories\\ProductRepository",
   "PreviewInSolutionExplorer": false
 }
