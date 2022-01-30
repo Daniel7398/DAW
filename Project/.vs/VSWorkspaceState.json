@@ -1,14 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Controllers",
-    "\\Models",
-    "\\Models\\Entities",
     "\\Repositories",
     "\\Repositories\\CartRepository",
     "\\Repositories\\DTOs",
     "\\Repositories\\ProductRepository"
   ],
-  "SelectedNode": "\\Project.sln",
   "PreviewInSolutionExplorer": false
 }
