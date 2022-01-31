@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using ASP_Project.Repositories.CartRepository;
 using ASP_Project.Models.Entities;
 using ASP_Project.Models.Constants;
 

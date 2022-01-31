@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tWN80CelvHTDjuMv+iNpSz+nr/KCBqwE/o/BqPWq+Iej+iVrvAaZig8gNQ0P6T+JoXvhmC/U0ukzy0YuWWhxiQ==",
+  "dgSpecHash": "f4OKUmyh5OAx7GORm0+ghECzvQ6BAIbnHXgd7q8E1ZtLVMAX19XXCnfy99N0jqnyDzOE1PcfRO15FFq//6ejTQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Foca\\Desktop\\ASP.NET-Project\\ASP_Project\\ASP_Project.csproj",
+  "projectFilePath": "C:\\Users\\Foca\\Documents\\GitHub\\DAW\\ASP.NET-Project\\ASP_Project\\ASP_Project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Foca\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Foca\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.13\\microsoft.aspnetcore.authentication.jwtbearer.5.0.13.nupkg.sha512",

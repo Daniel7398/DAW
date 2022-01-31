@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ASP_Project"
+    "\\ASP_Project",
+    "\\ASP_Project\\Models"
   ],
-  "SelectedNode": "\\ASP_Project\\ASP_Project.sln",
+  "SelectedNode": "\\ASP_Project\\Models\\AppDbContext.cs",
   "PreviewInSolutionExplorer": false
 }

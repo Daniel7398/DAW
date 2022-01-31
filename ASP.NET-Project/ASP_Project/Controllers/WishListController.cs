@@ -1,6 +1,5 @@
 ﻿using ASP_Project.Models.Entities;
-using ASP_Project.Repositories.CartRepository;
-using ASP_Project.Repositories.WishListRepository;
+using ASP_Project.Repositories;
 using ASP_Project.Services.UserServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

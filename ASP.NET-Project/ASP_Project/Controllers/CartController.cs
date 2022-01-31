@@ -1,7 +1,6 @@
 ﻿using ASP_Project.Models.DTOs;
 using ASP_Project.Models.Entities;
-using ASP_Project.Repositories.CartRepository;
-using ASP_Project.Repositories.ProductRepository;
+using ASP_Project.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
