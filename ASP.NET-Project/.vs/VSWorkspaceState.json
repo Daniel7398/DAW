@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ASP_Project",
-    "\\ASP_Project\\Repositories",
-    "\\ASP_Project\\Repositories\\OrderRepository"
+    "\\ASP_Project"
   ],
-  "SelectedNode": "\\ASP_Project\\Repositories\\OrderRepository\\OrderRepository.cs",
   "PreviewInSolutionExplorer": false
 }
