@@ -12,6 +12,8 @@ import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SharedModule } from './shared/shared.module';
 import { SearchFirstNamePipe } from './pipes/search-first-name.pipe';
+import { NgMaterialModule } from './ng-material/ng-material.module';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,8 +22,10 @@ import { SearchFirstNamePipe } from './pipes/search-first-name.pipe';
     DashboardComponent,
     ProfileComponent,
     SearchFirstNamePipe,
+    ProductFilterComponent,
   ],
   imports: [
+    NgMaterialModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

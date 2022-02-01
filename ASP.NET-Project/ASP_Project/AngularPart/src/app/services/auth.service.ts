@@ -22,5 +22,6 @@ export class AuthService {
       data,
       this.publicHeaders
     );
+
   }
 }
