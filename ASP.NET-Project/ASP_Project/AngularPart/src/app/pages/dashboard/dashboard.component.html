@@ -1,0 +1,17 @@
+<input [(ngModel)]="searchText" placeholder="Search..." />
+<ul>
+  <li *ngFor="let user of users | searchFirstName: searchText">
+    {{ user.firstName }} {{ user.lastName }}
+  </li>
+</ul>
+
+<h4>Users redered with user-info-componeny</h4>
+<ul>
+  <li *ngFor="let user of users">
+    <app-user-info
+      [firstName]="user.firstName"
+      [lastName]="user.lastName"
+      (onRemoveUser)="deleteUser($event)"
+    ></app-user-info>
+  </li>
+</ul>
